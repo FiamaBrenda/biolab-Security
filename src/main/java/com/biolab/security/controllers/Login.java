@@ -27,9 +27,7 @@ public class Login {
     public ResponseEntity<?> login(@RequestBody @Valid LoginDTO dto) {
         try {
             var u = userDetailsService.loadUserByUsername(dto.getCpf());
-
             if (!encoder.matches(dto.getSenha(),u.getPassword())) {
-
                 return ResponseEntity.ok("Usuario ou Senha incorretos");
             }
             return ResponseEntity.ok("Logado com Sucesso!! ");
